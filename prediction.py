@@ -13,7 +13,7 @@ import joblib
 
 import python_script
 
-def predict():
+def predict(values):
     rfc_classifier = joblib.load('trained_RDF_model.joblib')
 
     le1 = python_script.le1
@@ -24,7 +24,7 @@ def predict():
 
     sc = python_script.sc
 
-    values = [8.510801988, 9.16E-05, 5.920902064, 304.4845891, 3.60E-07, 1.635760979, 'Faint Yellow', 3.739693, 0.559295096, 0.880587373, 3.965759996, 62.38685835, 580.4796606, 3.84064004, 2.00E-09, 346.8499604, 'Reservoir', 12.80967626, 61.24561392]
+    # values = [8.510801988, 9.16E-05, 5.920902064, 304.4845891, 3.60E-07, 1.635760979, 'Faint Yellow', 3.739693, 0.559295096, 0.880587373, 3.965759996, 62.38685835, 580.4796606, 3.84064004, 2.00E-09, 346.8499604, 'Reservoir', 12.80967626, 61.24561392]
 
     # Convert the input values to a DataFrame
     input_data = pd.DataFrame([values])
