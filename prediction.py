@@ -1,30 +1,23 @@
 import pandas as pd
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, accuracy_score
-from sklearn.svm import SVC
-from sklearn.neighbors import KNeighborsClassifier
 import joblib
 
-import python_script
+import updated_python_script
+
+# values = [7.66857169, 7.06e-08, 7.541255359, 198.1312335, 1.31e-95,
+#        0.767179279, 'Colorless', 0.137766996, 1.008886456, 2.391833449,
+#        0.750761234, 148.9474344, 242.7039915, 3.709734571, 2.301398715,
+#        100.9851033, 'Stream', 9.674425593, 35.25315137, 12.0, 1.0]
 
 def predict(values):
-    rfc_classifier = joblib.load('trained_RDF_model.joblib')
+    rfc_classifier = joblib.load('trained_RDF_model_3.joblib')
 
-    le1 = python_script.le1
-    le2 = python_script.le2
+    le1 = updated_python_script.le1
+    le2 = updated_python_script.le2
 
-    ct1 = python_script.ct1
-    ct2 = python_script.ct2
+    ct1 = updated_python_script.ct1
+    ct2 = updated_python_script.ct2
 
-    sc = python_script.sc
-
-    # values = [8.510801988, 9.16E-05, 5.920902064, 304.4845891, 3.60E-07, 1.635760979, 'Faint Yellow', 3.739693, 0.559295096, 0.880587373, 3.965759996, 62.38685835, 580.4796606, 3.84064004, 2.00E-09, 346.8499604, 'Reservoir', 12.80967626, 61.24561392]
+    sc = updated_python_script.sc
 
     # Convert the input values to a DataFrame
     input_data = pd.DataFrame([values])
