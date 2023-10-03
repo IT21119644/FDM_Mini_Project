@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+/__pycache__
 *.py[cod]
 *$py.class
 
@@ -8,6 +8,8 @@ __pycache__/
 
 # csv files
 *.csv
+
+*.joblib
 
 # Distribution / packaging
 .Python
@@ -29,7 +31,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-.vscode/
+/.vscode
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

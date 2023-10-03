@@ -1,8 +1,61 @@
-.inputClass{
-    width: 200px;
-}
+/* testWaterPotability.css */
 
-.formContainer{
-    margin-left: 2%;
-    margin-top: 2%;
-}
+.formContainer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin-top: 10px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .form-check-label {
+    font-weight: normal;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+
+  .submitBtn{
+    margin: 10px;
+    width: 400px;
+    border-radius: 10px;
+    font-size: 25px;
+  }
+
+  
+  /* Add styles for checkboxes if needed */
+  
