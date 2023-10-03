@@ -5,9 +5,12 @@ function TestWaterPotability() {
 
   return (
     <>
-      <div>
+      <div className="container-fluid">
         <form className="formContainer">
-          <div class="mb-3">
+          <div className="row">
+            <div className="col-md-6">
+              {/* Left Column */}
+              <div class="mb-3">
             <label for="ph" class="form-label">
               pH value
             </label>
@@ -117,8 +120,11 @@ function TestWaterPotability() {
               id="Fluoride"
             />
           </div>
+            </div>
 
-          <div class="mb-3">
+            <div className="col-md-6">
+              {/* Right Column */}
+              <div class="mb-3">
             <label for="Copper" class="form-label">
             Copper
             </label>
@@ -227,19 +233,17 @@ function TestWaterPotability() {
               id="Air Temperature"
             />
           </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1">
-              Check me out
-            </label>
+              {/* Add more inputs (12-20) here */}
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary">
-            Submit
-          </button>
+
+          {/* Add more inputs (11-20) here */}
+
+          <div className="col-md-12 text-center"> {/* Add text-center class */}
+            <button type="submit" className="btn btn-primary submitBtn">
+              Predict Water Quality
+            </button>
+          </div>
         </form>
       </div>
     </>

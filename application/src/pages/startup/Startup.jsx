@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./startup.css";
 import Card from "../../common/Card";
+import '../../common/global.css'; // Import the global CSS
 
 import image1 from "../../assets/ph.jpg";
 import image2 from "../../assets/water.jpg";
