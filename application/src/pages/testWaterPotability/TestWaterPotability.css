@@ -1,7 +1,7 @@
 /* testWaterPotability.css */
 
 .formContainer {
-    background-color: #f2f2f2;
+  background-color: rgba(236, 236, 236, 0.548);
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -11,6 +11,7 @@
   
   .form-label {
     font-weight: bold;
+    font-size: 17px;
   }
   
   .form-control {
@@ -56,6 +57,7 @@
     font-size: 25px;
   }
 
-  
-  /* Add styles for checkboxes if needed */
-  
+  .slider {
+    width: 90%; 
+    margin-right: 10px; 
+  }
