@@ -5,6 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.impute import SimpleImputer
+from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import f1_score
 
 df = pd.read_csv('Water Quality Prediction.csv')
 df = df.sample(n=100000, random_state=42)
@@ -12,10 +14,12 @@ df = df.sample(n=100000, random_state=42)
 # remove all rows with Nan values
 # df.dropna(inplace=True) # modifies the dataframe in place
 
-encoded_data = pd.get_dummies(df, columns=['Month', 'Color', 'Source'])
+encoded_data = pd.get_dummies(df, columns=['Color'])
 
-X = encoded_data.drop(['Potability', 'Index'], axis=1) # axis=1 indicates we are dropping a column, not a row
+X = encoded_data.drop(['Potability', 'Index', 'Lead', 'Month', 'Source', 'Time of Day', 'Zinc'], axis=1) # axis=1 indicates we are dropping a column, not a row
 Y = encoded_data['Potability']
+
+print(X)
 
 imputer = SimpleImputer(missing_values=np.nan, strategy='median')
 imputer.fit(X)
@@ -33,6 +37,15 @@ y_pred = rfc_classifier.predict(X_test)
 
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
+
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print("F1 Score:", f1)
+
+print("Precision:", precision)
+print("Recall:", recall)
 
 
 ### accuracy 
