@@ -25,8 +25,11 @@ function TestWaterPotability() {
 
   const [predictionRes, setPredictionRes] = useState("GOOD");
 
-  function getPrediction(e) {
+  const [isLoading, setIsLoading] = useState(false); 
+
+  async function getPrediction(e) {
     e.preventDefault();
+    setIsLoading(true);
 
     const predValues = {
       pH: phValue,
@@ -47,20 +50,36 @@ function TestWaterPotability() {
       airTemp: airTemp,
       day: day,
     };
-    // axios
-    //   .post(
-    //     `https://wqp-function.azurewebsites.net/api/http_trigger_fdm_wqp?code=W4-e2qmVv887cVROqiUiBKJkOUSpAd8ih-YmxNCh5u5uAzFuhetIFQ==`,
-    //     predValues
-    //   )
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     // setPredictionRes
-    //   })
-    //   .catch((err) => {
-    //     alert(err);
-    //   });
 
-    console.log("Pred vals", predValues);
+
+    const response = await axios
+      .post(
+        `https://wqp-function.azurewebsites.net/api/http_trigger_fdm_wqp?code=W4-e2qmVv887cVROqiUiBKJkOUSpAd8ih-YmxNCh5u5uAzFuhetIFQ==`,
+        predValues,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          },  
+        }
+      )
+      .then((res) => {
+        console.log("pred value ", res.data);
+        setPredictionRes(res.data)
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.error("Response Data:", error.response.data);
+          console.error("Response Status:", error.response.status);
+        } else if (error.request) {
+          console.error("Request:", error.request);
+        } else {
+          console.error("Error Message:", error.message);
+        }
+      });
+
+    // console.log("Pred vals", predValues);
+    setIsLoading(false);
   }
 
 
@@ -419,7 +438,7 @@ function TestWaterPotability() {
               <div className="col-md-12 text-center">
                 {" "}
                 {/* Add text-center class */}
-                <button type="submit" className="btn btn-primary submitBtn">
+                <button type="submit" className="btn btn-primary submitBtn" disabled={isLoading}>
                   Predict Water Quality
                 </button>
               </div>

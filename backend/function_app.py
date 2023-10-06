@@ -44,6 +44,7 @@ def http_trigger_fdm_wqp(req: func.HttpRequest) -> func.HttpResponse:
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
              status_code=200
         )
+    
 
 @app.route(route="http_trigger_test", auth_level=func.AuthLevel.FUNCTION)
 def http_trigger_test(req: func.HttpRequest) -> func.HttpResponse:
