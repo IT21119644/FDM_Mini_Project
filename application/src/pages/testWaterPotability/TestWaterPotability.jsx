@@ -47,19 +47,22 @@ function TestWaterPotability() {
       airTemp: airTemp,
       day: day,
     };
-    axios
-      .post(
-        `https://fdm-project-4.azurewebsites.net/api/waterQualityAPI?`,
-        predValues
-      )
-      .then((res) => {
-        console.log(res.data);
-        // setPredictionRes
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    // axios
+    //   .post(
+    //     `https://wqp-function.azurewebsites.net/api/http_trigger_fdm_wqp?code=W4-e2qmVv887cVROqiUiBKJkOUSpAd8ih-YmxNCh5u5uAzFuhetIFQ==`,
+    //     predValues
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     // setPredictionRes
+    //   })
+    //   .catch((err) => {
+    //     alert(err);
+    //   });
+
+    console.log("Pred vals", predValues);
   }
+
 
   return (
     <>
@@ -82,7 +85,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={phValue}
                         onChange={(e) => {
-                          setPhValue(e.target.value);
+                          setPhValue(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -102,7 +105,7 @@ function TestWaterPotability() {
                         step="any"
                         value={ironAmt}
                         onChange={(e) => {
-                          setIronAmt(e.target.value);
+                          setIronAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -122,7 +125,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={nitrateAmt}
                         onChange={(e) => {
-                          setNitrateAmt(e.target.value);
+                          setNitrateAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -142,7 +145,7 @@ function TestWaterPotability() {
                         step="1"
                         value={chlorideAmt}
                         onChange={(e) => {
-                          setChlorideAmt(e.target.value);
+                          setChlorideAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -160,10 +163,11 @@ function TestWaterPotability() {
                       value={color}
                       onChange={(e) => setColor(e.target.value)}
                     >
-                      <option value="">Select Color</option>
-                      <option value="Red">Red</option>
-                      <option value="Green">Green</option>
-                      <option value="Blue">Blue</option>
+                      <option value="Colorless">Colorless</option>
+                      <option value="Near Colorless">Near Colorless</option>
+                      <option value="Faint Yellow">Faint Yellow</option>
+                      <option value="Light Yellow">Light Yellow</option>
+                      <option value="Yellow">Yellow</option>
                     </select>
                   </div>
 
@@ -179,7 +183,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={turbidityAmt}
                         onChange={(e) => {
-                          setTurbidityAmt(e.target.value);
+                          setTurbidityAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -199,7 +203,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={fluorideAmt}
                         onChange={(e) => {
-                          setFluorideAmt(e.target.value);
+                          setFluorideAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -219,7 +223,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={copperAmt}
                         onChange={(e) => {
-                          setCopperAmt(e.target.value);
+                          setCopperAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -243,7 +247,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={odorAmt}
                         onChange={(e) => {
-                          setOdorAmt(e.target.value);
+                          setOdorAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -263,7 +267,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={sulfateAmt}
                         onChange={(e) => {
-                          setSulfateAmt(e.target.value);
+                          setSulfateAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -283,7 +287,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={conductivityAmt}
                         onChange={(e) => {
-                          setConductivityAmt(e.target.value);
+                          setConductivityAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -303,7 +307,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={chlorineAmt}
                         onChange={(e) => {
-                          setChlorineAmt(e.target.value);
+                          setChlorineAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -323,7 +327,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={manganeseAmt}
                         onChange={(e) => {
-                          setManganeseAmt(e.target.value);
+                          setManganeseAmt(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -343,7 +347,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={TDS}
                         onChange={(e) => {
-                          setTDS(e.target.value);
+                          setTDS(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -363,7 +367,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={waterTemp}
                         onChange={(e) => {
-                          setWaterTemp(e.target.value);
+                          setWaterTemp(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -383,7 +387,7 @@ function TestWaterPotability() {
                         step="0.1"
                         value={airTemp}
                         onChange={(e) => {
-                          setAirTemp(e.target.value);
+                          setAirTemp(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
@@ -402,7 +406,7 @@ function TestWaterPotability() {
                         max="31"
                         value={day}
                         onChange={(e) => {
-                          setDay(e.target.value);
+                          setDay(parseFloat(e.target.value));
                         }}
                         className="slider"
                       />
