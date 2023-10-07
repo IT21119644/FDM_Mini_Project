@@ -17,12 +17,12 @@
   }
   
   .card-img-top {
-    transform: scale(1);
-    transition: all 0.2s ease-in-out;
+    max-width: 300px; /* Set the maximum width for the image */
+    height: 250px; 
   }
   
   .card-img-top:hover {
-    transform: scale(1.8);
+    /* transform: scale(1.8); */
   }
 
   .card{
