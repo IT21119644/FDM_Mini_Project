@@ -34,10 +34,10 @@ def http_trigger_fdm_wqp(req: func.HttpRequest) -> func.HttpResponse:
     res = prediction_2.predict(values)
 
     if(res[0] == 0):
-        return func.HttpResponse(f"This water sample is not suitable {pH} {iron}")
+        return func.HttpResponse(f"This water sample is not suitable")
     
     elif(res[0] == 1):
-        return func.HttpResponse(f"This water sample is good {pH} {iron}")
+        return func.HttpResponse(f"This water sample is suitable for consumption")
         
     else:
         return func.HttpResponse(

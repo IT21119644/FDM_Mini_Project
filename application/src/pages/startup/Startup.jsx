@@ -44,21 +44,98 @@ const cards = [
     image: image3,
     url: "https://youtube.com/fazttech",
   },
+  {
+    id: 7,
+    title: "Fazt Web",
+    image: image2,
+    url: "https://faztweb.com",
+  },
+  {
+    id: 8,
+    title: "Fazt Blog",
+    image: image2,
+    url: "https://blog.faztweb.com",
+  },
+  {
+    id: 9,
+    title: "Fazt Youtube",
+    image: image3,
+    url: "https://youtube.com/fazttech",
+  },
+  {
+    id: 10,
+    title: "Fazt Blog",
+    image: image2,
+    url: "https://blog.faztweb.com",
+  },
+  {
+    id: 11,
+    title: "Fazt Youtube",
+    image: image3,
+    url: "https://youtube.com/fazttech",
+  },
+  {
+    id: 12,
+    title: "Fazt Youtube",
+    image: image3,
+    url: "https://youtube.com/fazttech",
+  },
+  {
+    id: 13,
+    title: "Fazt Web",
+    image: image2,
+    url: "https://faztweb.com",
+  },
+  {
+    id: 14,
+    title: "Fazt Blog",
+    image: image2,
+    url: "https://blog.faztweb.com",
+  },
+  {
+    id: 15,
+    title: "Fazt Youtube",
+    image: image3,
+    url: "https://youtube.com/fazttech",
+  },
+  {
+    id: 16,
+    title: "Fazt Blog",
+    image: image2,
+    url: "https://blog.faztweb.com",
+  },
+  {
+    id: 17,
+    title: "Fazt Youtube",
+    image: image3,
+    url: "https://youtube.com/fazttech",
+  },
 ];
 
 function Startup() {
   document.title = "FDM | Startup";
 
+  // Calculate the number of columns for a 4-card grid
+  const numColumns = 4;
+
+  // Split the cards into groups of 4 for each row
+  const rows = [];
+  for (let i = 0; i < cards.length; i += numColumns) {
+    rows.push(cards.slice(i, i + numColumns));
+  }
+
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center h-100">
-        <div className="row">
-          {cards.map(({ title, image, url, id }) => (
-            <div className="col-md-4" key={id}>
-              <Card imageSource={image} title={title} url={url} />
-            </div>
-          ))}
-        </div>
+      <div className="container">
+        {rows.map((row, rowIndex) => (
+          <div className="row" key={rowIndex}>
+            {row.map(({ title, image, url, id }) => (
+              <div className={`col-md-${12 / numColumns}`} key={id}>
+                <Card imageSource={image} title={title} url={url} />
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </>
   );
