@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9636b5a5-d5f4-498b-82d6-a75612226b84/resourceGroups/wqpfunction/providers/Microsoft.Web/sites/fdm-mini-project-webapp",
+    "appService.deploySubpath": "application"
+}
