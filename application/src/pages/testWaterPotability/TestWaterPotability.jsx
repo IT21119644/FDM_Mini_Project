@@ -9,7 +9,7 @@ function TestWaterPotability() {
   const [ironAmt, setIronAmt] = useState(1);
   const [nitrateAmt, setNitrateAmt] = useState(1);
   const [chlorideAmt, setChlorideAmt] = useState(1);
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("Colorless");
   const [turbidityAmt, setTurbidityAmt] = useState(1);
   const [fluorideAmt, setFluorideAmt] = useState(1);
   const [copperAmt, setCopperAmt] = useState(1);
