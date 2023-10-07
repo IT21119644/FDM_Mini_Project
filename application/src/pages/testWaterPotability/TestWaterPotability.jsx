@@ -28,7 +28,7 @@ function TestWaterPotability() {
   const [airTemp, setAirTemp] = useState(1);
   const [day, setDay] = useState(1);
 
-  const [predictionRes, setPredictionRes] = useState("GOOD");
+  const [predictionRes, setPredictionRes] = useState("None");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,11 +36,13 @@ function TestWaterPotability() {
     setFinalIronValue(ironAmt * Math.pow(10, ironDec));
   }, [ironAmt, ironDec]);
 
+  let predValues;
+
   async function getPrediction(e) {
     e.preventDefault();
     setIsLoading(true);
 
-    const predValues = {
+    predValues = {
       pH: phValue,
       iron: finalIronValue,
       nitrate: nitrateAmt,
@@ -492,6 +494,8 @@ function TestWaterPotability() {
                 <h4>Model Precision - 64.1%</h4>
                 <h4>Model F1 - 76.5%</h4>
                 <h4>Model Recall - 94.8%</h4>
+
+                <br/>
               </div>
               
               <br />
