@@ -7,6 +7,7 @@ function TestWaterPotability() {
 
   const [phValue, setPhValue] = useState(1);
   const [ironAmt, setIronAmt] = useState(1);
+  const [ironDec, setIronDec] = useState(1);
   const [nitrateAmt, setNitrateAmt] = useState(1);
   const [chlorideAmt, setChlorideAmt] = useState(1);
   const [color, setColor] = useState("Colorless");
@@ -25,7 +26,7 @@ function TestWaterPotability() {
 
   const [predictionRes, setPredictionRes] = useState("GOOD");
 
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
   async function getPrediction(e) {
     e.preventDefault();
@@ -51,21 +52,20 @@ function TestWaterPotability() {
       day: day,
     };
 
-
     const response = await axios
       .post(
         `https://wqp-function.azurewebsites.net/api/http_trigger_fdm_wqp?code=W4-e2qmVv887cVROqiUiBKJkOUSpAd8ih-YmxNCh5u5uAzFuhetIFQ==`,
         predValues,
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          },  
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       )
       .then((res) => {
         console.log("pred value ", res.data);
-        setPredictionRes(res.data)
+        setPredictionRes(res.data);
       })
       .catch((error) => {
         if (error.response) {
@@ -78,10 +78,8 @@ function TestWaterPotability() {
         }
       });
 
-    // console.log("Pred vals", predValues);
     setIsLoading(false);
   }
-
 
   return (
     <>
@@ -117,18 +115,44 @@ function TestWaterPotability() {
                       Iron
                     </label>
                     <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="1.050000e-53"
-                        max="2.574860e+01"
-                        step="any"
-                        value={ironAmt}
-                        onChange={(e) => {
-                          setIronAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{ironAmt}</div>
+                      <div className="iron-inputs">
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="1"
+                            value={Math.floor(ironAmt)} // Integer part of ironAmt
+                            onChange={(e) => {
+                              setIronAmt(Math.floor(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {Math.floor(ironAmt)}
+                          </div>
+                        </div>
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="-53"
+                            max="2"
+                            step="1"
+                            value={ironDec} // Decimal part of ironAmt
+                            onChange={(e) => {
+                              setIronDec(
+                                Math.floor(e.target.value)
+                              );
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {parseFloat(
+                              ironDec
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -438,7 +462,11 @@ function TestWaterPotability() {
               <div className="col-md-12 text-center">
                 {" "}
                 {/* Add text-center class */}
-                <button type="submit" className="btn btn-primary submitBtn" disabled={isLoading}>
+                <button
+                  type="submit"
+                  className="btn btn-primary submitBtn"
+                  disabled={isLoading}
+                >
                   Predict Water Quality
                 </button>
               </div>
@@ -448,13 +476,18 @@ function TestWaterPotability() {
           <div className="col-md-6">
             <div className="predictionContainer">
               <h2>Prediction Result</h2>
+              <br />
 
-              <h4>Model Accuracy - 87%</h4>
-              <h4>Model Precision - 87%</h4>
-              <h4>Model F1 - 87%</h4>
-              <h4>Model Recall - 87%</h4>
+              <div className="indented-text">
+                <h4>Model Accuracy - 86.9%</h4>
+                <h4>Model Precision - 64.1%</h4>
+                <h4>Model F1 - 76.5%</h4>
+                <h4>Model Recall - 94.8%</h4>
+              </div>
 
-              <br/><br/><br/>
+              <br />
+              <br />
+              <br />
               <h4>Prediction Result: {predictionRes}</h4>
             </div>
           </div>

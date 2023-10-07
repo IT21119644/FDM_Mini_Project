@@ -71,3 +71,34 @@
     margin-top: 10px;
     margin-left: 20px; /* Adjust the left margin as needed */
   }
+
+  .indented-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.indented-text h4 {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.iron-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Styles for each individual slider */
+.slider-container {
+  flex: 1; /* Distribute available space equally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Adjustments for the slider value text */
+.slider-value {
+  margin-top: 10px;
+  font-size: 14px; /* Adjust as needed */
+}
