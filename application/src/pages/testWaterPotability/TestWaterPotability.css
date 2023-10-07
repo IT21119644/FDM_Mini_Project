@@ -102,3 +102,11 @@
   margin-top: 10px;
   font-size: 14px; /* Adjust as needed */
 }
+
+.loading-spinner {
+  text-align: center;
+}
+
+.loading-spinner p {
+  margin-top: 10px;
+}

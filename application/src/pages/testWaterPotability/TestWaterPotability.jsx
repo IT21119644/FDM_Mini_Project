@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./TestWaterPotability.css";
+import { BarLoader } from "react-spinners";
 
 function TestWaterPotability() {
   document.title = "FDM | water potability";
 
   const [phValue, setPhValue] = useState(1);
+
   const [ironAmt, setIronAmt] = useState(1);
   const [ironDec, setIronDec] = useState(1);
+  const [finalIronValue, setFinalIronValue] = useState(1);
+
   const [nitrateAmt, setNitrateAmt] = useState(1);
   const [chlorideAmt, setChlorideAmt] = useState(1);
   const [color, setColor] = useState("Colorless");
@@ -28,13 +32,17 @@ function TestWaterPotability() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    setFinalIronValue(ironAmt * Math.pow(10, ironDec));
+  }, [ironAmt, ironDec]);
+
   async function getPrediction(e) {
     e.preventDefault();
     setIsLoading(true);
 
     const predValues = {
       pH: phValue,
-      iron: ironAmt,
+      iron: finalIronValue,
       nitrate: nitrateAmt,
       chloride: chlorideAmt,
       color: color,
@@ -51,6 +59,8 @@ function TestWaterPotability() {
       airTemp: airTemp,
       day: day,
     };
+
+    console.log("FINAL IRON VAL", finalIronValue);
 
     const response = await axios
       .post(
@@ -140,18 +150,17 @@ function TestWaterPotability() {
                             step="1"
                             value={ironDec} // Decimal part of ironAmt
                             onChange={(e) => {
-                              setIronDec(
-                                Math.floor(e.target.value)
-                              );
+                              setIronDec(Math.floor(e.target.value));
                             }}
                             className="slider"
                           />
                           <div className="slider-value">
-                            {parseFloat(
-                              ironDec
-                            )}
+                            {parseFloat(ironDec)}
                           </div>
                         </div>
+                      </div>
+                      <div className="slider-value">
+                        {ironAmt * Math.pow(10, ironDec)}
                       </div>
                     </div>
                   </div>
@@ -484,9 +493,19 @@ function TestWaterPotability() {
                 <h4>Model F1 - 76.5%</h4>
                 <h4>Model Recall - 94.8%</h4>
               </div>
+              
+              <br />
+              <br />
+              <div className="loading-spinner">
+                <BarLoader
+                  size={25}
+                  color={"#123abc"}
+                  loading={isLoading}
+                  width={200}
+                />
+              </div>
 
-              <br />
-              <br />
+              
               <br />
               <h4>Prediction Result: {predictionRes}</h4>
             </div>
