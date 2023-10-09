@@ -15,19 +15,25 @@ function TestWaterPotability() {
   const [nitrateAmt, setNitrateAmt] = useState(1);
   const [chlorideAmt, setChlorideAmt] = useState(1);
   const [color, setColor] = useState("Colorless");
+  const [month, setMonth] = useState("January");
+
   const [turbidityAmt, setTurbidityAmt] = useState(1);
   const [turbidityDec, setTurbidityDec] = useState(1);
   const [finalTurbidityValue, setFinalTurbidityValue] = useState(1);
+
   const [fluorideAmt, setFluorideAmt] = useState(1);
   const [fluorideDec, setFluorideDec] = useState(1);
   const [finalfluorideValue, setFinalFluorideValue] = useState(1);
+
   const [copperAmt, setCopperAmt] = useState(1);
   const [copperDec, setCopperDec] = useState(1);
   const [finalCopperValue, setFinalCopperValue] = useState(1);
+
   const [odorAmt, setOdorAmt] = useState(1);
   const [sulfateAmt, setSulfateAmt] = useState(1);
   const [conductivityAmt, setConductivityAmt] = useState(1);
   const [chlorineAmt, setChlorineAmt] = useState(1);
+
   const [manganeseAmt, setManganeseAmt] = useState(1);
   const [manganeseDec, setManganeseDec] = useState(1);
   const [finalManganeseValue, setFinalManganeseValue] = useState(1);
@@ -62,12 +68,12 @@ function TestWaterPotability() {
       color: color,
       turbidity: finalTurbidityValue,
       fluoride: finalfluorideValue,
-      copper: copperAmt,
+      copper: finalCopperValue,
       odor: odorAmt,
       sulfate: sulfateAmt,
       conductivity: conductivityAmt,
       chlorine: chlorineAmt,
-      manganese: manganeseAmt,
+      manganese: finalManganeseValue,
       totalDissolvedSolids: TDS,
       waterTemp: waterTemp,
       airTemp: airTemp,
@@ -543,6 +549,7 @@ function TestWaterPotability() {
                       <div className="slider-value">{waterTemp} °C</div>
                     </div>
                   </div>
+                  <br/>
 
                   <div class="mb-3">
                     <label for="Air Temperature" class="form-label">
@@ -582,6 +589,31 @@ function TestWaterPotability() {
                       <div className="slider-value">{day}</div>
                     </div>
                   </div>
+
+                  <div class="mb-3">
+                    <label for="month" class="form-label">
+                      Month
+                    </label>
+                    <select
+                      className="form-select"
+                      id="month"
+                      value={month}
+                      onChange={(e) => setMonth(e.target.value)}
+                    >
+                      <option value="January">January</option>
+                      <option value="February">February</option>
+                      <option value="March">March</option>
+                      <option value="April">April</option>
+                      <option value="May">May</option>
+                      <option value="June">June</option>
+                      <option value="July">July</option>
+                      <option value="August">August</option>
+                      <option value="September">September</option>
+                      <option value="October">October</option>
+                      <option value="November">November</option>
+                      <option value="December">December</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -602,7 +634,7 @@ function TestWaterPotability() {
           <div className="col-md-6">
             <div className="predictionContainer">
               <h2>Prediction Result</h2>
-              <br />
+              <br/>
 
               <div className="indented-text">
                 <h4>Model Accuracy - 86.9%</h4>
