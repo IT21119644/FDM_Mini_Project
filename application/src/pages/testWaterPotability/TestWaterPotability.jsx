@@ -15,14 +15,29 @@ function TestWaterPotability() {
   const [nitrateAmt, setNitrateAmt] = useState(1);
   const [chlorideAmt, setChlorideAmt] = useState(1);
   const [color, setColor] = useState("Colorless");
+  const [month, setMonth] = useState("January");
+
   const [turbidityAmt, setTurbidityAmt] = useState(1);
+  const [turbidityDec, setTurbidityDec] = useState(1);
+  const [finalTurbidityValue, setFinalTurbidityValue] = useState(1);
+
   const [fluorideAmt, setFluorideAmt] = useState(1);
+  const [fluorideDec, setFluorideDec] = useState(1);
+  const [finalfluorideValue, setFinalFluorideValue] = useState(1);
+
   const [copperAmt, setCopperAmt] = useState(1);
+  const [copperDec, setCopperDec] = useState(1);
+  const [finalCopperValue, setFinalCopperValue] = useState(1);
+
   const [odorAmt, setOdorAmt] = useState(1);
   const [sulfateAmt, setSulfateAmt] = useState(1);
   const [conductivityAmt, setConductivityAmt] = useState(1);
   const [chlorineAmt, setChlorineAmt] = useState(1);
+
   const [manganeseAmt, setManganeseAmt] = useState(1);
+  const [manganeseDec, setManganeseDec] = useState(1);
+  const [finalManganeseValue, setFinalManganeseValue] = useState(1);
+
   const [TDS, setTDS] = useState(1);
   const [waterTemp, setWaterTemp] = useState(1);
   const [airTemp, setAirTemp] = useState(1);
@@ -34,7 +49,11 @@ function TestWaterPotability() {
 
   useEffect(() => {
     setFinalIronValue(ironAmt * Math.pow(10, ironDec));
-  }, [ironAmt, ironDec]);
+    setFinalTurbidityValue(turbidityAmt * Math.pow(10, turbidityDec));
+    setFinalFluorideValue(fluorideAmt * Math.pow(10, fluorideDec));
+    setFinalCopperValue(copperAmt * Math.pow(10, copperDec));
+    setFinalManganeseValue(manganeseAmt * Math.pow(10, manganeseDec));
+  }, [ironAmt, ironDec, turbidityAmt, turbidityDec, fluorideAmt, fluorideDec, copperAmt, copperDec, manganeseAmt, manganeseDec]);
 
   let predValues;
 
@@ -48,21 +67,21 @@ function TestWaterPotability() {
       nitrate: nitrateAmt,
       chloride: chlorideAmt,
       color: color,
-      turbidity: turbidityAmt,
-      fluoride: fluorideAmt,
-      copper: copperAmt,
+      turbidity: finalTurbidityValue,
+      fluoride: finalfluorideValue,
+      copper: finalCopperValue,
       odor: odorAmt,
       sulfate: sulfateAmt,
       conductivity: conductivityAmt,
       chlorine: chlorineAmt,
-      manganese: manganeseAmt,
+      manganese: finalManganeseValue,
       totalDissolvedSolids: TDS,
       waterTemp: waterTemp,
       airTemp: airTemp,
       day: day,
     };
 
-    console.log("FINAL IRON VAL", finalIronValue);
+    console.log("FINAL VAL", predValues);
 
     const response = await axios
       .post(
@@ -118,7 +137,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{phValue}</div>
+                      <div className="slider-value">{phValue} pH</div>
                     </div>
                   </div>
 
@@ -162,7 +181,7 @@ function TestWaterPotability() {
                         </div>
                       </div>
                       <div className="slider-value">
-                        {ironAmt * Math.pow(10, ironDec)}
+                        {ironAmt * Math.pow(10, ironDec)} ppm
                       </div>
                     </div>
                   </div>
@@ -183,7 +202,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{nitrateAmt}</div>
+                      <div className="slider-value">{nitrateAmt} mg/L</div>
                     </div>
                   </div>
 
@@ -203,7 +222,139 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{chlorideAmt}</div>
+                      <div className="slider-value">{chlorideAmt}  mg/L</div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="mb-3">
+                    <label for="Turbidity" class="form-label">
+                      Turbidity
+                    </label>
+                    <div className="horizontal-slider">
+                      <div className="iron-inputs">
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            value={Math.floor(turbidityAmt)} // Integer part of ironAmt
+                            onChange={(e) => {
+                              setTurbidityAmt(Math.floor(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {Math.floor(turbidityAmt)}
+                          </div>
+                        </div>
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="-14"
+                            max="2"
+                            step="1"
+                            value={turbidityDec} // Decimal part of ironAmt
+                            onChange={(e) => {
+                              setTurbidityDec(Math.floor(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {parseFloat(turbidityDec)}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="slider-value">
+                        {turbidityAmt * Math.pow(10, turbidityDec)} NTU
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Copper" class="form-label">
+                      Copper
+                    </label>
+                    <div className="horizontal-slider">
+                      <div className="iron-inputs">
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            value={copperAmt}
+                            onChange={(e) => {
+                              setCopperAmt(parseFloat(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {Math.floor(fluorideAmt)}
+                          </div>
+                        </div>
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="-9"
+                            max="2"
+                            step="1"
+                            value={copperDec} // Decimal part of ironAmt
+                            onChange={(e) => {
+                              setCopperDec(Math.floor(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {parseFloat(copperDec)}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="slider-value">
+                        {copperAmt * Math.pow(10, copperDec)} ppm
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Sulfate" class="form-label">
+                      Sulfate
+                    </label>
+                    <div className="horizontal-slider">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10"
+                        step="0.1"
+                        value={sulfateAmt}
+                        onChange={(e) => {
+                          setSulfateAmt(parseFloat(e.target.value));
+                        }}
+                        className="slider"
+                      />
+                      <div className="slider-value">{sulfateAmt}  mg/L</div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="Conductivity" class="form-label">
+                      Conductivity
+                    </label>
+                    <div className="horizontal-slider">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10"
+                        step="0.1"
+                        value={conductivityAmt}
+                        onChange={(e) => {
+                          setConductivityAmt(parseFloat(e.target.value));
+                        }}
+                        className="slider"
+                      />
+                      <div className="slider-value">{conductivityAmt} uS/cm</div>
                     </div>
                   </div>
 
@@ -225,65 +376,6 @@ function TestWaterPotability() {
                     </select>
                   </div>
 
-                  <div class="mb-3">
-                    <label for="Turbidity" class="form-label">
-                      Turbidity
-                    </label>
-                    <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        value={turbidityAmt}
-                        onChange={(e) => {
-                          setTurbidityAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{turbidityAmt}</div>
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="Fluoride" class="form-label">
-                      Fluoride
-                    </label>
-                    <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        value={fluorideAmt}
-                        onChange={(e) => {
-                          setFluorideAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{fluorideAmt}</div>
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="Copper" class="form-label">
-                      Copper
-                    </label>
-                    <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        value={copperAmt}
-                        onChange={(e) => {
-                          setCopperAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{copperAmt}</div>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="col-md-6">
@@ -305,47 +397,97 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{odorAmt}</div>
+                      <div className="slider-value">{odorAmt} mg/L</div>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="Sulfate" class="form-label">
-                      Sulfate
+                    <label for="Fluoride" class="form-label">
+                      Fluoride
                     </label>
                     <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        value={sulfateAmt}
-                        onChange={(e) => {
-                          setSulfateAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{sulfateAmt}</div>
+                      <div className="iron-inputs">
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            value={fluorideAmt}
+                            onChange={(e) => {
+                              setFluorideAmt(parseFloat(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {Math.floor(fluorideAmt)}
+                          </div>
+                        </div>
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="-6"
+                            max="2"
+                            step="1"
+                            value={fluorideDec} // Decimal part of ironAmt
+                            onChange={(e) => {
+                              setFluorideDec(Math.floor(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {parseFloat(ironDec)}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="slider-value">
+                        {fluorideAmt * Math.pow(10, fluorideDec)} ppm
+                      </div>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="Conductivity" class="form-label">
-                      Conductivity
+                    <label for="Manganese" class="form-label">
+                      Manganese
                     </label>
                     <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        value={conductivityAmt}
-                        onChange={(e) => {
-                          setConductivityAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{conductivityAmt}</div>
+                      <div className="iron-inputs">
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            value={manganeseAmt}
+                            onChange={(e) => {
+                              setManganeseAmt(parseFloat(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {Math.floor(manganeseAmt)}
+                          </div>
+                        </div>
+                        <div className="slider-container">
+                          <input
+                            type="range"
+                            min="-46"
+                            max="2"
+                            step="1"
+                            value={manganeseDec}
+                            onChange={(e) => {
+                              setManganeseDec(Math.floor(e.target.value));
+                            }}
+                            className="slider"
+                          />
+                          <div className="slider-value">
+                            {parseFloat(ironDec)}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="slider-value">
+                        {manganeseAmt * Math.pow(10, manganeseDec)} mg/L
+                      </div>
                     </div>
                   </div>
 
@@ -365,27 +507,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{chlorineAmt}</div>
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="Manganese" class="form-label">
-                      Manganese
-                    </label>
-                    <div className="horizontal-slider">
-                      <input
-                        type="range"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        value={manganeseAmt}
-                        onChange={(e) => {
-                          setManganeseAmt(parseFloat(e.target.value));
-                        }}
-                        className="slider"
-                      />
-                      <div className="slider-value">{manganeseAmt}</div>
+                      <div className="slider-value">{chlorineAmt} mg/L</div>
                     </div>
                   </div>
 
@@ -405,7 +527,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{TDS}</div>
+                      <div className="slider-value">{TDS} mg/L</div>
                     </div>
                   </div>
 
@@ -425,9 +547,10 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{waterTemp}</div>
+                      <div className="slider-value">{waterTemp} °C</div>
                     </div>
                   </div>
+                  <br/>
 
                   <div class="mb-3">
                     <label for="Air Temperature" class="form-label">
@@ -445,7 +568,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{airTemp}</div>
+                      <div className="slider-value">{airTemp} °F</div>
                     </div>
                   </div>
 
@@ -466,6 +589,31 @@ function TestWaterPotability() {
                       />
                       <div className="slider-value">{day}</div>
                     </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="month" class="form-label">
+                      Month
+                    </label>
+                    <select
+                      className="form-select"
+                      id="month"
+                      value={month}
+                      onChange={(e) => setMonth(e.target.value)}
+                    >
+                      <option value="January">January</option>
+                      <option value="February">February</option>
+                      <option value="March">March</option>
+                      <option value="April">April</option>
+                      <option value="May">May</option>
+                      <option value="June">June</option>
+                      <option value="July">July</option>
+                      <option value="August">August</option>
+                      <option value="September">September</option>
+                      <option value="October">October</option>
+                      <option value="November">November</option>
+                      <option value="December">December</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -495,9 +643,9 @@ function TestWaterPotability() {
                 <h4>Model F1 - 76.5%</h4>
                 <h4>Model Recall - 94.8%</h4>
 
-                <br/>
+                <br />
               </div>
-              
+
               <br />
               <br />
               <div className="loading-spinner">
@@ -509,7 +657,7 @@ function TestWaterPotability() {
                 />
               </div>
 
-              
+
               <br />
               <h4>Prediction Result: {predictionRes}</h4>
             </div>
