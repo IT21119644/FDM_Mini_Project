@@ -20,7 +20,6 @@ function TestWaterPotability() {
   const [turbidityAmt, setTurbidityAmt] = useState(1);
   const [turbidityDec, setTurbidityDec] = useState(1);
   const [finalTurbidityValue, setFinalTurbidityValue] = useState(1);
-<<<<<<< HEAD
 
   const [fluorideAmt, setFluorideAmt] = useState(1);
   const [fluorideDec, setFluorideDec] = useState(1);
@@ -30,14 +29,6 @@ function TestWaterPotability() {
   const [copperDec, setCopperDec] = useState(1);
   const [finalCopperValue, setFinalCopperValue] = useState(1);
 
-=======
-  const [fluorideAmt, setFluorideAmt] = useState(1);
-  const [fluorideDec, setFluorideDec] = useState(1);
-  const [finalfluorideValue, setFinalFluorideValue] = useState(1);
-  const [copperAmt, setCopperAmt] = useState(1);
-  const [copperDec, setCopperDec] = useState(1);
-  const [finalCopperValue, setFinalCopperValue] = useState(1);
->>>>>>> 5deb3e7a83a843d0fef953044353ec6a4cadb8a6
   const [odorAmt, setOdorAmt] = useState(1);
   const [sulfateAmt, setSulfateAmt] = useState(1);
   const [conductivityAmt, setConductivityAmt] = useState(1);
@@ -46,10 +37,6 @@ function TestWaterPotability() {
   const [manganeseAmt, setManganeseAmt] = useState(1);
   const [manganeseDec, setManganeseDec] = useState(1);
   const [finalManganeseValue, setFinalManganeseValue] = useState(1);
-<<<<<<< HEAD
-
-=======
->>>>>>> 5deb3e7a83a843d0fef953044353ec6a4cadb8a6
   const [TDS, setTDS] = useState(1);
   const [waterTemp, setWaterTemp] = useState(1);
   const [airTemp, setAirTemp] = useState(1);
@@ -81,11 +68,7 @@ function TestWaterPotability() {
       color: color,
       turbidity: finalTurbidityValue,
       fluoride: finalfluorideValue,
-<<<<<<< HEAD
       copper: finalCopperValue,
-=======
-      copper: copperAmt,
->>>>>>> 5deb3e7a83a843d0fef953044353ec6a4cadb8a6
       odor: odorAmt,
       sulfate: sulfateAmt,
       conductivity: conductivityAmt,
@@ -651,7 +634,7 @@ function TestWaterPotability() {
           <div className="col-md-6">
             <div className="predictionContainer">
               <h2>Prediction Result</h2>
-              <br />
+              <br/>
 
               <div className="indented-text">
                 <h4>Model Accuracy - 86.9%</h4>
