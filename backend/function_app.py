@@ -28,8 +28,9 @@ def http_trigger_fdm_wqp(req: func.HttpRequest) -> func.HttpResponse:
     waterTemp = req_body.get('waterTemp')
     airTemp = req_body.get('airTemp')
     day = req_body.get('day')
+    month = req_body.get('month')
 
-    values = [pH, iron, nitrate, chloride, color, turbidity, fluoride, copper, odor, sulfate, conductivity, chlorine, manganese, totalDissolvedSolids, waterTemp, airTemp, day]
+    values = [pH, iron, nitrate, chloride, color, turbidity, fluoride, copper, odor, sulfate, conductivity, chlorine, manganese, totalDissolvedSolids, waterTemp, airTemp, month, day]
 
     res = prediction_2.predict(values)
 
