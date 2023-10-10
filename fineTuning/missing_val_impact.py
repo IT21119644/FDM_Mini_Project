@@ -14,9 +14,9 @@ df = df.sample(n=100000, random_state=42)
 # remove all rows with Nan values
 # df.dropna(inplace=True) # modifies the dataframe in place
 
-encoded_data = pd.get_dummies(df, columns=['Color'])
+encoded_data = pd.get_dummies(df, columns=['Color', 'Month'])
 
-X = encoded_data.drop(['Potability', 'Index', 'Lead', 'Month', 'Source', 'Time of Day', 'Zinc'], axis=1) # axis=1 indicates we are dropping a column, not a row
+X = encoded_data.drop(['Potability', 'Index', 'Lead', 'Source', 'Time of Day', 'Zinc'], axis=1) # axis=1 indicates we are dropping a column, not a row
 Y = encoded_data['Potability']
 
 print(X)

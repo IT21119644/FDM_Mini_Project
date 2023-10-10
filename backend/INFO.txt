@@ -71,3 +71,9 @@ Removed cols - [Lead, Month, Source, Zinc, Time of Day]
     Precision - 0.6418
     Recall - 0.9485
     F1 - 0.7655
+
+Removed cols - [Lead, Source, Zinc, Time of Day]
+    Accuracy - 0.87035
+    Precision - 0.6428
+    Recall - 0.9507
+    F1 - 0.7670
