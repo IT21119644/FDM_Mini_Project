@@ -77,6 +77,7 @@ function TestWaterPotability() {
       totalDissolvedSolids: TDS,
       waterTemp: waterTemp,
       airTemp: airTemp,
+      month: month,
       day: day,
     };
 
