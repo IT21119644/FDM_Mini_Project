@@ -1,24 +1,31 @@
 import pandas as pd
 import joblib
+import pickle
 
-import updated_python_script_2
-
-# values = [7.66857169, 0.020272253, 4.665769038, 106.7763838,
-#         'Light Yellow', 0.577121406, 0.391623321, 0.012384522,
-#        2.951640615, 264.3387584, 428.813495, 4.778219736, 0.527222432,
-#        194.5130257, 20.48237253, 73.7719982, 28.0]
+# values = [1.004799273, 6.13e-06, 7.114755278, 120.5277688, 'Colorless', 0.613997908,
+#        1.758450685, 0.255472008, 2.092090468, 120.745502, 241.4468855,
+#        3.099393646, 0.044697746, 257.7175114, 22.90091727, 54.31051792, 'January',
+#        7.0]
 
 def predict(values):
     # print(f"This is from the updatedpython_script_2 {values[0]}")
     rfc_classifier = joblib.load('trained_RDF_model_6.joblib')
+    # xgb_classifier = joblib.load('trained_XGBoost.joblib')
 
-    le1 = updated_python_script_2.le1
-    le2 = updated_python_script_2.le2
+    with open('le1.pkl', 'rb') as file:
+        le1 = pickle.load(file)
 
-    ct1 = updated_python_script_2.ct1
-    ct2 = updated_python_script_2.ct2
+    with open('le2.pkl', 'rb') as file:
+        le2 = pickle.load(file)
 
-    sc = updated_python_script_2.sc
+    with open('ct1.pkl', 'rb') as file:
+        ct1 = pickle.load(file)
+
+    with open('ct2.pkl', 'rb') as file:
+        ct2 = pickle.load(file)
+
+    with open('sc.pkl', 'rb') as file:
+        sc = pickle.load(file)
 
     # Convert the input values to a DataFrame
     input_data = pd.DataFrame([values])
