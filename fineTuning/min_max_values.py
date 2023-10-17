@@ -3,8 +3,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('Water Quality Prediction.csv')
-df = df.drop(['Month', 'Index', 'Source', 'Zinc', 'Lead', 'Time of Day', 'Potability'], axis=1)
+df = pd.read_csv('D:\\SLIIT\\Year 03 sem 02\\FDM\\Mini-project-updated-version\\FDM_Mini_Project\\backend\\Water Quality Prediction.csv')
+df = df.drop(['Index', 'Source', 'Zinc', 'Lead', 'Time of Day', 'Potability'], axis=1)
+
 
 numeric_columns = df.select_dtypes(include=['number'])
 
