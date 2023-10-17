@@ -181,7 +181,7 @@ function TestWaterPotability() {
                         </div>
                       </div>
                       <div className="slider-value">
-                        {ironAmt * Math.pow(10, ironDec)} ppm
+                      {ironDec < -2 ? `${(ironAmt * Math.pow(10, ironDec)).toExponential(1)}` : `${(ironAmt * Math.pow(10, ironDec)).toFixed(2)}`} ppm
                       </div>
                     </div>
                   </div>
@@ -268,7 +268,7 @@ function TestWaterPotability() {
                         </div>
                       </div>
                       <div className="slider-value">
-                        {turbidityAmt * Math.pow(10, turbidityDec)} NTU
+                      {turbidityDec < -2 ? `${(turbidityAmt * Math.pow(10, turbidityDec)).toExponential(1)}` : `${(turbidityAmt * Math.pow(10, turbidityDec)).toFixed(2)}`} NTU
                       </div>
                     </div>
                   </div>
@@ -292,7 +292,7 @@ function TestWaterPotability() {
                             className="slider"
                           />
                           <div className="slider-value">
-                            {Math.floor(fluorideAmt)}
+                            {Math.floor(copperAmt)}
                           </div>
                         </div>
                         <div className="slider-container">
@@ -313,7 +313,9 @@ function TestWaterPotability() {
                         </div>
                       </div>
                       <div className="slider-value">
-                        {copperAmt * Math.pow(10, copperDec)} ppm
+                        {/* {`${copperAmt.toFixed(1)}e${copperDec}`} ppm   */}
+                        {/* {copperAmt * Math.pow(10, copperDec)} ppm */}
+                        {copperDec < -2 ? `${(copperAmt * Math.pow(10, copperDec)).toExponential(1)}` : `${(copperAmt * Math.pow(10, copperDec)).toFixed(2)}`} ppm
                       </div>
                     </div>
                   </div>
@@ -436,12 +438,12 @@ function TestWaterPotability() {
                             className="slider"
                           />
                           <div className="slider-value">
-                            {parseFloat(ironDec)}
+                            {parseFloat(fluorideDec)}
                           </div>
                         </div>
                       </div>
                       <div className="slider-value">
-                        {fluorideAmt * Math.pow(10, fluorideDec)} ppm
+                      {fluorideDec < -2 ? `${(fluorideAmt * Math.pow(10, fluorideDec)).toExponential(1)}` : `${(fluorideAmt * Math.pow(10, fluorideDec)).toFixed(2)}`} ppm
                       </div>
                     </div>
                   </div>
@@ -481,12 +483,12 @@ function TestWaterPotability() {
                             className="slider"
                           />
                           <div className="slider-value">
-                            {parseFloat(ironDec)}
+                            {parseFloat(manganeseDec)}
                           </div>
                         </div>
                       </div>
                       <div className="slider-value">
-                        {manganeseAmt * Math.pow(10, manganeseDec)} mg/L
+                      {manganeseDec < -2 ? `${(manganeseAmt * Math.pow(10, manganeseDec)).toExponential(1)}` : `${(manganeseAmt * Math.pow(10, manganeseDec)).toFixed(2)}`} mg/L
                       </div>
                     </div>
                   </div>
