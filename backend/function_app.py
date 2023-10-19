@@ -1,7 +1,8 @@
 import azure.functions as func
 import logging
-
+import json
 import prediction_2
+import outliers
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
@@ -32,13 +33,22 @@ def http_trigger_fdm_wqp(req: func.HttpRequest) -> func.HttpResponse:
 
     values = [pH, iron, nitrate, chloride, color, turbidity, fluoride, copper, odor, sulfate, conductivity, chlorine, manganese, totalDissolvedSolids, waterTemp, airTemp, month, day]
 
+    range = [(5,8.5),(0.3,10),(0,100),(0,250),None,(0.5,1),(1e-6,1.5),(5e-4,1),(2,130),(2e-3,0.13),(0,250),(200,800),(0.2,6),(0,700),(0,100),(4,35),None,(1,31)]
+
     res = prediction_2.predict(values)
 
+    outlier_list = outliers.outliers(values,range)
+    response_dict = dict()
+    
     if(res[0] == 0):
-        return func.HttpResponse(f"This water sample is not suitable")
+        response_dict['prediction'] = "This water sample is not suitable"
+        response_dict['outliers'] = outlier_list
+        return func.HttpResponse(json.dumps(response_dict), mimetype="application/json")
     
     elif(res[0] == 1):
-        return func.HttpResponse(f"This water sample is suitable for consumption")
+        response_dict['prediction'] = "This water sample is suitable"
+        response_dict['outliers'] = outlier_list
+        return func.HttpResponse(json.dumps(response_dict), mimetype="application/json")
         
     else:
         return func.HttpResponse(

@@ -5,6 +5,7 @@ import { BarLoader } from "react-spinners";
 
 function TestWaterPotability() {
   document.title = "FDM | water potability";
+  const [outlierList, setOutlierList] = useState([]);
 
   const [phValue, setPhValue] = useState(1);
 
@@ -95,8 +96,9 @@ function TestWaterPotability() {
         }
       )
       .then((res) => {
-        console.log("pred value ", res.data);
-        setPredictionRes(res.data);
+        console.log("pred value ", res.data['prediction']);
+        setPredictionRes(res.data['prediction']);
+        setOutlierList(res.data['outliers'])
       })
       .catch((error) => {
         if (error.response) {
@@ -645,6 +647,35 @@ function TestWaterPotability() {
                 <h4>Model F1 - 76.5%</h4>
                 <h4>Model Recall - 94.8%</h4>
 
+                <br/><h2>Outliers</h2><br/>
+                
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+                  <div>
+                    <h4>Column</h4><br/>
+                    {outlierList.map((outVal, index) => (
+                      <div key={index}>
+                        <h5>{outVal.column}</h5>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <h4>Min</h4><br/>
+                    {outlierList.map((outVal, index) => (
+                      <div key={index}>
+                        <h5>{outVal.min}</h5>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <h4>Max</h4><br/>
+                    {outlierList.map((outVal, index) => (
+                      <div key={index}>
+                        <h5>{outVal.max}</h5>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <br />
               </div>
 
@@ -659,9 +690,9 @@ function TestWaterPotability() {
                 />
               </div>
 
-
-              <br />
-              <h4>Prediction Result: {predictionRes}</h4>
+              <h4 style={{ color: predictionRes.includes('not') ? 'red' : 'green' }}>
+                {predictionRes}
+              </h4>
             </div>
           </div>
         </div>
