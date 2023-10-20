@@ -8,3 +8,10 @@
 ## Frontend - ReactJs with vite
 ## Backend - Azure serverless function apps
 ## ML models using python scikit-learn library
+
+
+# How the model has been trained
+
+## I trained 6 models namely Logistic regression classification, SVM, K-NN, Decision Tree, Random Forest and XGBoost algorithms. After evaluating each of those models, I decided to go with the random forest model as it was comparatively better.
+
+## Data preprocessing has been done to handle missing values, categorical values, normalize numeric values and to handle outliers.
