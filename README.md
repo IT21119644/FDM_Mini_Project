@@ -1,6 +1,6 @@
 # FDM_Mini_Project
 
-![Water Quality](https://example.com/water_quality_image.jpg)
+![Water Quality](https://drive.google.com/file/d/15rN27OtZMfzSbK4rb0t854rDi2SVcBuK/view?usp=share_link)
 
 ## Overview
 Welcome to the Water Quality Prediction System, a tool that predicts the potability of water samples based on various parameters. Whether you are a policymaker, environmental agency, water treatment plant, researcher, or part of a community, this system can help you assess the quality of water samples you've collected.
@@ -19,3 +19,13 @@ Welcome to the Water Quality Prediction System, a tool that predicts the potabil
 1. Access the web application [here](https://lemon-bush-0a7f9860f.3.azurestaticapps.net/).
 2. Input water quality parameters, such as pH, iron content, and turbidity.
 3. Receive a prediction on the potability of your water sample.
+
+## Installation
+To set up the project locally, follow these steps:
+
+1. Clone the repository:
+2. Install dependencies for the frontend and backend (npm install)
+3. Run the application (FE: npm run dev)
+
+## Acknowledgments
+- Water quality dataset source: [Kaggle](https://www.kaggle.com/datasets/vanthanadevi08/water-quality-prediction)
