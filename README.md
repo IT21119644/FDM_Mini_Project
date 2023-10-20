@@ -1,17 +1,21 @@
 # FDM_Mini_Project
 
-### This is a water quality prediction system, where you can input your water quality parameters like the pH, iron content, turbidity etc and get a prediction on whether the water sample you collected is potable or not.
+![Water Quality](https://example.com/water_quality_image.jpg)
 
-### Our main target audience include policymakers, environmental agencies, water treatment plants, researchers, and communities.
+## Overview
+Welcome to the Water Quality Prediction System, a tool that predicts the potability of water samples based on various parameters. Whether you are a policymaker, environmental agency, water treatment plant, researcher, or part of a community, this system can help you assess the quality of water samples you've collected.
 
-# Technologoes used
-## Frontend - ReactJs with vite
-## Backend - Azure serverless function apps
-## ML models using python scikit-learn library
+## Technologies Used
+- **Frontend:** Developed with React.js and Vite for a smooth user experience.
+- **Backend:** Powered by Azure Serverless Function Apps, ensuring scalability and efficiency.
+- **Machine Learning Models:** Built using Python's scikit-learn library to provide accurate predictions.
 
+## Model Training
+- Six models were trained: Logistic Regression, Support Vector Machine (SVM), K-Nearest Neighbors (K-NN), Decision Tree, Random Forest, and XGBoost.
+- After thorough evaluation, the Random Forest model was selected for its superior performance.
+- Data preprocessing included handling missing values, categorical variables, normalization of numeric values, and addressing outliers.
 
-# How the model has been trained
-
-## I trained 6 models namely Logistic regression classification, SVM, K-NN, Decision Tree, Random Forest and XGBoost algorithms. After evaluating each of those models, I decided to go with the random forest model as it was comparatively better.
-
-## Data preprocessing has been done to handle missing values, categorical values, normalize numeric values and to handle outliers.
+## How to Use
+1. Access the web application [here](https://lemon-bush-0a7f9860f.3.azurestaticapps.net/).
+2. Input water quality parameters, such as pH, iron content, and turbidity.
+3. Receive a prediction on the potability of your water sample.
