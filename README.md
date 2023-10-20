@@ -1,6 +1,6 @@
 # FDM_Mini_Project
 
-![Water Quality](https://drive.google.com/file/d/15rN27OtZMfzSbK4rb0t854rDi2SVcBuK/view?usp=share_link)
+![Water Quality](https://github.com/IT21119644/FDM_Mini_Project/blob/main/FDM.png)
 
 ## Overview
 Welcome to the Water Quality Prediction System, a tool that predicts the potability of water samples based on various parameters. Whether you are a policymaker, environmental agency, water treatment plant, researcher, or part of a community, this system can help you assess the quality of water samples you've collected.
