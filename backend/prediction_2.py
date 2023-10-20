@@ -8,23 +8,21 @@ import pickle
 #        7.0]
 
 def predict(values):
-    # print(f"This is from the updatedpython_script_2 {values[0]}")
-    rfc_classifier = joblib.load('trained_RDF_model_6.joblib')
-    # xgb_classifier = joblib.load('trained_XGBoost.joblib')
+    classifier = joblib.load('./Trained_Models/trained_RDF_model_6.joblib')
 
-    with open('le1.pkl', 'rb') as file:
+    with open('./PKL_Files/le1.pkl', 'rb') as file:
         le1 = pickle.load(file)
 
-    with open('le2.pkl', 'rb') as file:
+    with open('./PKL_Files/le2.pkl', 'rb') as file:
         le2 = pickle.load(file)
 
-    with open('ct1.pkl', 'rb') as file:
+    with open('./PKL_Files/ct1.pkl', 'rb') as file:
         ct1 = pickle.load(file)
 
-    with open('ct2.pkl', 'rb') as file:
+    with open('./PKL_Files/ct2.pkl', 'rb') as file:
         ct2 = pickle.load(file)
 
-    with open('sc.pkl', 'rb') as file:
+    with open('./PKL_Files/sc.pkl', 'rb') as file:
         sc = pickle.load(file)
 
     # Convert the input values to a DataFrame
@@ -44,7 +42,7 @@ def predict(values):
     # scale the values
     input_data[:, 17:] = sc.transform(input_data[:, 17:])
 
-    y_single = rfc_classifier.predict(input_data)
+    y_single = classifier.predict(input_data)
 
     print('ysingle', y_single)
     return y_single
