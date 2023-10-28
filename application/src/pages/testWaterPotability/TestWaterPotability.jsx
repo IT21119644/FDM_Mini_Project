@@ -169,7 +169,7 @@ function TestWaterPotability() {
                           <input
                             type="range"
                             min="-53"
-                            max="2"
+                            max="1"
                             step="1"
                             value={ironDec} // Decimal part of ironAmt
                             onChange={(e) => {
@@ -195,8 +195,8 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
-                        max="100"
+                        min="0.1"
+                        max="70"
                         step="0.1"
                         value={nitrateAmt}
                         onChange={(e) => {
@@ -204,7 +204,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{nitrateAmt} mg/L</div>
+                      <div className="slider-value">{nitrateAmt} ppm</div>
                     </div>
                   </div>
 
@@ -216,7 +216,7 @@ function TestWaterPotability() {
                       <input
                         type="range"
                         min="0"
-                        max="2000"
+                        max="1000"
                         step="1"
                         value={chlorideAmt}
                         onChange={(e) => {
@@ -224,7 +224,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{chlorideAmt}  mg/L</div>
+                      <div className="slider-value">{chlorideAmt}  ppm</div>
                     </div>
                   </div>
 
@@ -256,7 +256,7 @@ function TestWaterPotability() {
                           <input
                             type="range"
                             min="-14"
-                            max="2"
+                            max="1"
                             step="1"
                             value={turbidityDec} // Decimal part of ironAmt
                             onChange={(e) => {
@@ -301,7 +301,7 @@ function TestWaterPotability() {
                           <input
                             type="range"
                             min="-9"
-                            max="2"
+                            max="1"
                             step="1"
                             value={copperDec} // Decimal part of ironAmt
                             onChange={(e) => {
@@ -329,8 +329,8 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
-                        max="10"
+                        min="10"
+                        max="1000"
                         step="0.1"
                         value={sulfateAmt}
                         onChange={(e) => {
@@ -338,7 +338,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{sulfateAmt}  mg/L</div>
+                      <div className="slider-value">{sulfateAmt}  ppm</div>
                     </div>
                   </div>
 
@@ -349,8 +349,8 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
-                        max="10"
+                        min="10"
+                        max="2000"
                         step="0.1"
                         value={conductivityAmt}
                         onChange={(e) => {
@@ -392,7 +392,7 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
+                        min="0.01"
                         max="10"
                         step="0.1"
                         value={odorAmt}
@@ -401,7 +401,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{odorAmt} mg/L</div>
+                      <div className="slider-value">{odorAmt} ppm</div>
                     </div>
                   </div>
 
@@ -431,7 +431,7 @@ function TestWaterPotability() {
                           <input
                             type="range"
                             min="-6"
-                            max="2"
+                            max="1"
                             step="1"
                             value={fluorideDec} // Decimal part of ironAmt
                             onChange={(e) => {
@@ -476,7 +476,7 @@ function TestWaterPotability() {
                           <input
                             type="range"
                             min="-46"
-                            max="2"
+                            max="1"
                             step="1"
                             value={manganeseDec}
                             onChange={(e) => {
@@ -490,7 +490,7 @@ function TestWaterPotability() {
                         </div>
                       </div>
                       <div className="slider-value">
-                      {manganeseDec < -2 ? `${(manganeseAmt * Math.pow(10, manganeseDec)).toExponential(1)}` : `${(manganeseAmt * Math.pow(10, manganeseDec)).toFixed(2)}`} mg/L
+                      {manganeseDec < -2 ? `${(manganeseAmt * Math.pow(10, manganeseDec)).toExponential(1)}` : `${(manganeseAmt * Math.pow(10, manganeseDec)).toFixed(2)}`} ppm
                       </div>
                     </div>
                   </div>
@@ -511,7 +511,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{chlorineAmt} mg/L</div>
+                      <div className="slider-value">{chlorineAmt} ppm</div>
                     </div>
                   </div>
 
@@ -522,8 +522,8 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
-                        max="10"
+                        min="0.01"
+                        max="1000"
                         step="0.1"
                         value={TDS}
                         onChange={(e) => {
@@ -531,7 +531,7 @@ function TestWaterPotability() {
                         }}
                         className="slider"
                       />
-                      <div className="slider-value">{TDS} mg/L</div>
+                      <div className="slider-value">{TDS} ppm</div>
                     </div>
                   </div>
 
@@ -542,8 +542,8 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
-                        max="10"
+                        min="0.1"
+                        max="200"
                         step="0.1"
                         value={waterTemp}
                         onChange={(e) => {
@@ -563,8 +563,8 @@ function TestWaterPotability() {
                     <div className="horizontal-slider">
                       <input
                         type="range"
-                        min="0"
-                        max="10"
+                        min="0.1"
+                        max="200"
                         step="0.1"
                         value={airTemp}
                         onChange={(e) => {
